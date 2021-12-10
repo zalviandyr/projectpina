@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Galery;
 use Illuminate\Http\Request;
 
 class GaleryController extends Controller
@@ -43,9 +44,13 @@ class GaleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($media)
     {
-        //
+        $data = [
+            'tittle' => 'List gallery',
+            'galery' => Galery::where('slug', $media)->first(),
+        ];
+        return view('galery', $data);
     }
 
     /**
