@@ -14,7 +14,12 @@ class GaleryController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'tittle' => 'List gallery',
+            'gallery' => Galery::latest()->get(),
+            // 'route' => route('post.create')
+        ];
+        return view('galery', $data);
     }
 
     /**
@@ -48,7 +53,7 @@ class GaleryController extends Controller
     {
         $data = [
             'tittle' => 'List gallery',
-            'galery' => Galery::where('slug', $media)->first(),
+            'media' => Galery::where('tittle', $media)->first(),
         ];
         return view('galery', $data);
     }

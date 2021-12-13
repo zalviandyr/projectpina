@@ -22,8 +22,8 @@ Auth::routes();
 
 Route::get('/gallery/{media}', [GaleryController::class, 'show']);
 
-Route::get('/gallery',  function(){
-    return view('gallery');
-});
+// Route::get('/gallery',  function(){
+//     return view('gallery');
+// });
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
