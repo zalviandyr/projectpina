@@ -15,7 +15,7 @@ class ArticleController extends Controller
     public function index()
     {
         $data = [
-            'tittle' => 'List blog',
+            'tittle' => 'List Article',
             'post' => Post::orderBy('created_at','desc')->paginate(5),
         ];
         return view('article', $data);
@@ -51,7 +51,7 @@ class ArticleController extends Controller
     public function show($id)
     {
         $data = [
-            'Tittle'=>'List Blog',
+            'Tittle'=>'List Article',
             'post'=> Post::where('Slug', $id)->first(),
         ];
 
