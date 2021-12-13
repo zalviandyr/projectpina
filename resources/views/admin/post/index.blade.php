@@ -10,14 +10,14 @@
         </div>
         <div class="section-header-breadcrumb">
           <div class="breadcrumb-item active"><a href="/">Dashboard</a></div>
-          <div class="breadcrumb-item"><a href="/post">Posts</a></div>
-          <div class="breadcrumb-item">All Posts</div>
+          <div class="breadcrumb-item"><a href="/post">Article</a></div>
+          <div class="breadcrumb-item">Table List</div>
         </div>
       </div>
       <div class="section-body">
-        <h2 class="section-title">Posts</h2>
+        <h2 class="section-title">Article</h2>
         <p class="section-lead">
-          You can manage all posts, such as editing, deleting and more.
+          You can manage all article, such as editing, deleting and more.
         </p>
 
         <div class="row">
@@ -27,7 +27,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h4>All Posts</h4>
+                <h4>Table List</h4>
               </div>
               <div class="card-body">
                 

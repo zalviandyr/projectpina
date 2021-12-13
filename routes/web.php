@@ -1,5 +1,8 @@
 <?php
+
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +21,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('frontend.home');
 // });
 Route::get('/', [FrontendController::class, 'index'])->name('home');
-Route::get('/article/{slug}', [PostController::class, 'show']);
-Route::get('/article', [PostController::class, 'index']);
+Route::get('/article/{slug}', [ArticleController::class, 'show']);
+Route::get('/article', [ArticleController::class, 'index']);
+
 Route::resource('post', PostController::class);
 Auth::routes();
 
