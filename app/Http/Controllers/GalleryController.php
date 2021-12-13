@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Galery;
 
-class CategoryController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,11 @@ class CategoryController extends Controller
     public function index()
     {
         $data = [
-            'category_name' => 'List category',
-            'description' => Category::latest()->get(),
+            'tittle' => 'List gallery',
+            'gallery' => Galery::latest()->get(),
             // 'route' => route('post.create')
         ];
-        return view('admin.category.index', $data);
+        return view('gallery', $data);
     }
 
     /**
@@ -49,9 +49,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($media)
     {
-        // 
+        $data = [
+            'tittle' => 'List gallery',
+            'media' => Galery::where('tittle', $media)->first(),
+        ];
+        return view('gallery', $data);
     }
 
     /**

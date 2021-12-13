@@ -2,6 +2,9 @@
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GaleryController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +23,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Auth::routes();
 
-Route::get('/gallery/{media}', [GaleryController::class, 'show']);
+Route::get('/gallery', [GalleryController::class, 'index']);
 
-// Route::get('/gallery',  function(){
-//     return view('gallery');
-// });
+Route::get('/gallery/{media}', [GalleryController::class, 'show']);
+
+Route::get('/gallery',  function(){
+    return view('gallery');
+});
+
+//route galery dan category
+Route::resource('galery', GaleryController::class);
+
+Route::resource('category', CategoryController::class);
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
