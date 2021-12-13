@@ -16,8 +16,8 @@ class CreateCommentsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('Tittle');
-            $table->string('Slug')->unique();
+            $table->string('tittle');
+            $table->string('slug')->unique();
             $table->text('excerpt');
             $table->text('body');
             
