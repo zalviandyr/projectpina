@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,9 +25,11 @@ class HomeController extends Controller
 
      public function index()
     {
-        $data=[
-            'users'=>User::count()
+        $data = [
+            'user' => User::count(),
+            'post' => Post::count(),
         ];
+           
         return view('admin.dashboard',$data);
     }
 }

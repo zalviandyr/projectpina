@@ -17,7 +17,7 @@
                     <h4>Article</h4>
                   </div>
                   <div class="card-body">
-                    27
+                    {{ $post }}
                   </div>
                 </div>
               </div>
@@ -47,7 +47,7 @@
                     <h4>Users</h4>
                   </div>
                   <div class="card-body">
-                  {{ $users }}
+                  {{ $user }}
                   </div>
                 </div>
               </div>
@@ -57,4 +57,3 @@
       </div>
       <!-- Main Content -->
 @endsection
-

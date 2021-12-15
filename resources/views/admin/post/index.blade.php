@@ -4,7 +4,7 @@
 <div class="main-content" style="min-height: 514px;">
     <section class="section">
       <div class="section-header">
-        <h1>Posts</h1>
+        <h1>Article</h1>
         <div class="section-header-button">
           <a href="{{ $route }}" class="btn btn-primary">Add New</a>
         </div>
@@ -47,7 +47,7 @@
                             
                             @foreach ($posts as $post)     
                             <tr>
-                                <td>{{ $post->Tittle }}
+                                <td>{{ $post->tittle }}
                                     <div class="table-links">
                                         <a href="{{ route('post.edit',$post->id) }}">Edit</a>
                                         <div class="bullet"></div>
@@ -60,7 +60,7 @@
 
                                 </div>
                                 </td>
-                                <td>{{ $post->Slug }}</td>
+                                <td>{{ $post->slug }}</td>
                                 <td>{{ $post->excerpt }}</td>
                                 <td>{{ $post->created_at }}</td>
                                 <td>{{ $post->user->name }}</td>
