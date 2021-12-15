@@ -52,7 +52,7 @@
         <ul>
           <li><a class="active " href="/">Home</a></li>
           <li><a href="#">Article</a></li>
-          <li><a href="/galery">Gallery</a></li>
+          <li><a href="/gallery">Gallery</a></li>
           <li><a href="about.html">About Us</a></li>
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>

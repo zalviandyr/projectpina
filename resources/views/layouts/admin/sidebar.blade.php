@@ -21,7 +21,7 @@
                             </ul>
                             </li>
                     </li>
-                    <li><a class="nav-link" href="/gallery"><i class="fas fa-image"></i> <span>Gallery</span></a></li>
+                    <li><a class="nav-link" href="/galery"><i class="fas fa-image"></i> <span>Gallery</span></a></li>
                     <li><a class="nav-link" href="/user"><i class="fas fa-user"></i> <span>Manage User</span></a></li>
                     <li>
                             <li class="dropdown active">

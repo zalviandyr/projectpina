@@ -16,6 +16,11 @@
   <link rel="stylesheet" href="{{ asset ('assets/admin/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset ('assets/admin/css/components.css') }}">
 
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+  
+
+
+
   <!-- Datatables -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
@@ -50,6 +55,8 @@
   <!-- Template JS File -->
   <script src="{{ asset ('assets/admin/js/scripts.js') }}"></script>
   <script src="{{ asset ('assets/admin/js/custom.js') }}"></script>
+
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
   <!-- Datatables -->
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
