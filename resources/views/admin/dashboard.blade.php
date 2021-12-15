@@ -32,7 +32,7 @@
                     <h4>Category</h4>
                   </div>
                   <div class="card-body">
-                  3
+                  {{ $category }}
                   </div>
                 </div>
               </div>
@@ -47,7 +47,7 @@
                     <h4>Users</h4>
                   </div>
                   <div class="card-body">
-                  {{ $user }}
+                  {{ $users }}
                   </div>
                 </div>
               </div>
