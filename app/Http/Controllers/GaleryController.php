@@ -16,8 +16,8 @@ class GaleryController extends Controller
     {
         $data = [
             'tittle' => 'List gallery',
-            'galery' => Galery::latest()->get(),
-            // 'route' => route('post.create')
+            'galeries' => Galery::latest()->get(),
+            'route' => route('galery.create')
         ];
         return view('admin.galery.index', $data);
     }
@@ -29,7 +29,12 @@ class GaleryController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'tittle' => 'Create New',
+            'method' => 'POST',
+            'route' => route('galery.store')
+        ];
+        return view('admin.galery.editor', $data);
     }
 
     /**
@@ -40,7 +45,14 @@ class GaleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $galery = new Galery();
+        $user_id = Auth()->user()->id;
+
+        $galery->user_id = $user_id;
+        $galery->tittle = $request->tittle;
+        $galery->media = $request->media;
+        $galery->save();
+        return redirect(route("galery.index"));
     }
 
     /**
@@ -66,7 +78,13 @@ class GaleryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'tittle' => 'Edit',
+            'method' => 'PUT',
+            'route' => route('galery.update', $id),
+            'galery' => Galery::where('id',$id)->first()
+        ];
+        return view('admin.galery.editor', $data);
     }
 
     /**
@@ -78,7 +96,14 @@ class GaleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $galery = Galery::find($id);
+        $user_id = Auth()->user()->id;
+
+        $galery->user_id = $user_id;
+        $galery->tittle = $request->tittle;
+        $galery->media = $request->media;
+        $galery->update();
+        return redirect(route("galery.index"));
     }
 
     /**
@@ -89,6 +114,8 @@ class GaleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $destroy = Galery::where('id',$id);
+        $destroy->delete();
+        return redirect(route("galery.index"));
     }
 }

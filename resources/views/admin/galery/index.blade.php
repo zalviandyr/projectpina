@@ -5,7 +5,7 @@
       <div class="section-header">
         <h1>Gallery</h1>
         <div class="section-header-button">
-          <a href="features-post-create.html" class="btn btn-primary">Add New</a>
+          <a href="{{ $route }}" class="btn btn-primary">Add New</a>
         </div>
         <div class="section-header-breadcrumb">
           <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
@@ -28,27 +28,38 @@
               <div class="card-header">
                 <h4>All Gallery</h4>
               </div>
-              
+              <div class="card-body">
 
                 <div class="clearfix mb-3"></div>
 
                 <div class="table-responsive">
                     <table id="table_id" class="display">
                         <thead>
-                            <tr>
-                                <th>Column 1</th>
-                                <th>Column 2</th>
-                            </tr>
+                          <tr>
+                            <th>Tittle</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Row 1 Data 1</td>
-                                <td>Row 1 Data 2</td>
-                            </tr>
-                            <tr>
-                                <td>Row 2 Data 1</td>
-                                <td>Row 2 Data 2</td>
-                            </tr>
+                          @foreach ($galeries as $galery)
+                          <tr>
+                            <td>{{ $galery->tittle }}</td>
+                            <td>{{ $galery->media }}</td>
+                            <td>{{ $galery->action }}
+                              <div>
+                                <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="" href="{{ route('galery.edit',$galery->id) }}" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                <a class="btn btn-danger btn-action trigger--fire-modal-1" data-toggle="tooltip" title="" onclick="event.preventDefault(); $('#destroy-{{ $galery->id }}').submit()" data-original-title="Delete"><i class="fas fa-trash"></i></a>
+                              <form id="destroy-{{ $galery->id }}" action="{{ route('galery.destroy',$galery->id) }}" method="POST">
+                                @csrf 
+                                @method('DELETE')
+                             </form>
+                              </div>
+                            </td>
+                            
+                          </tr>
+                          @endforeach
+                            
                         </tbody>
                     </table>
                 </div>

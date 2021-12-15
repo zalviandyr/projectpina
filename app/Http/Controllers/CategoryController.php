@@ -15,9 +15,9 @@ class CategoryController extends Controller
     public function index()
     {
         $data = [
-            'category_name' => 'List category',
-            'description' => Category::latest()->get(),
-            // 'route' => route('post.create')
+            'tittle' => 'List category',
+            'categories' => Category::latest()->get(),
+            'route' => route('category.create')
         ];
         return view('admin.category.index', $data);
     }
@@ -29,7 +29,12 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'tittle' => 'Create New',
+            'method' => 'POST',
+            'route' => route('category.store')
+        ];
+        return view('admin.category.editor', $data);
     }
 
     /**
@@ -40,7 +45,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+
+        $category->category_name = $request->category_name;
+        $category->description = $request->description;
+        $category->save();
+        return redirect(route("category.index"));
     }
 
     /**
@@ -49,9 +59,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($category_name)
     {
-        // 
+        $data = [
+            'category_name' => 'List category',
+            'description' => Category::where('tittle', $category_name)->first(),
+        ];
+        return view('admin.category.index', $data);
     }
 
     /**
@@ -62,7 +76,13 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'tittle' => 'Edit',
+            'method' => 'PUT',
+            'route' => route('category.update', $id),
+            'category' => Category::where('id',$id)->first()
+        ];
+        return view('admin.category.editor', $data);
     }
 
     /**
@@ -74,7 +94,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        
+        $category->category_name = $request->category_name;
+        $category->description = $request->description;
+        $category->update();
+        return redirect(route("category.index"));
     }
 
     /**
@@ -85,6 +110,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $destroy = Category::where('id',$id);
+        $destroy->delete();
+        return redirect(route("category.index"));
     }
 }

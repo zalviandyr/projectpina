@@ -5,7 +5,7 @@
       <div class="section-header">
         <h1>Category</h1>
         <div class="section-header-button">
-          <a href="features-post-create.html" class="btn btn-primary">Add New</a>
+          <a href="{{ $route }}" class="btn btn-primary">Add New</a>
         </div>
         <div class="section-header-breadcrumb">
           <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
@@ -19,35 +19,48 @@
           You can manage all categories, such as editing, deleting and more.
         </p>
 
-        <div class="row"></div>
+        <div class="row">
+
+        </div>
         <div class="row mt-4">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
                 <h4>All Category</h4>
               </div>
-          
-              <div class="clearfix mb-3"></div>
+              <div class="card-body">
+
+                <div class="clearfix mb-3"></div>
 
                 <div class="table-responsive">
-                  <table id="table_id" class="display">
-                    <thead>
+                    <table id="table_id" class="display">
+                        <thead>
+                          <tr>
+                            <th>Categories</th>
+                            <th>Decription</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach ($categories as $category)
                         <tr>
-                            <th>Column 1</th>
-                            <th>Column 2</th>
+                          <td>{{ $category->category_name }}</td>
+                          <td>{{ $category->description }}</td>
+                          <td>{{ $category->action }}
+                            <div>
+                              <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="" href="{{ route('category.edit',$category->id) }}" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                              <a class="btn btn-danger btn-action trigger--fire-modal-1" data-toggle="tooltip" title="" onclick="event.preventDefault(); $('#destroy-{{ $category->id }}').submit()" data-original-title="Delete"><i class="fas fa-trash"></i></a>
+                              <form id="destroy-{{ $category->id }}" action="{{ route('category.destroy',$category->id) }}" method="POST">
+                                @csrf 
+                                @method('DELETE')
+                            </form>
+                            </div>
+                          </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Row 1 Data 1</td>
-                            <td>Row 1 Data 2</td>
-                        </tr>
-                        <tr>
-                            <td>Row 2 Data 1</td>
-                            <td>Row 2 Data 2</td>
-                        </tr>
-                    </tbody>
-                  </table>
+                        @endforeach
+                            
+                        </tbody>
+                    </table>
                 </div>
               </div>
             </div>
@@ -55,7 +68,7 @@
         </div>
       </div>
     </section>
-  </div>
+</div>
 @endsection
 
 @section('script')
