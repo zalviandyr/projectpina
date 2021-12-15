@@ -111,7 +111,17 @@
                 <img src="../../landing/assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
               </div>
 
-              <h2 class="entry-title">
+              @foreach ($post as $p)
+              <div id="unique-entry-id-0" class="blog-entry">
+              <h1 class="blog-entry-title"><a href="/post/{{ $p['slug'] }}" class="blog-permalink">{{ $p['tittle'] }}</a></h1>
+              <div class="blog-entry-date"> {{ $p['created_at'] }} <span class="blog-entry-category"><a href="files/category-author-by-cecep-abu-azhar.html">Author : {{ $p->user->name }}</a></span></div>
+              <div class="blog-entry-body">{{ $p['excerpt'] }}
+                <span class="blog-read-more"><a href="/post/{{ $p['slug'] }}">Read More…</a></span>
+              </div>
+            </div>
+                @endforeach
+
+              {{-- <h2 class="{{ $title }}">
                 <a href="blog-single.html">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</a>
               </h2>
 
@@ -131,7 +141,7 @@
                 <div class="read-more">
                   <a href="blog-single.html">Read More</a>
                 </div>
-              </div>
+              </div> --}}
 
             </article><!-- End blog entry -->
 
@@ -324,7 +334,6 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
 
-   
 
     <div class="footer-top">
       <div class="container">

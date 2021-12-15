@@ -37,10 +37,8 @@
                         <thead>
                             <tr>
                                 <th>Tittle</th>
-                                <th>Slug</th>
-                                <th>Excerpt</th>
-                                <th>Date</th>
-                                <th>Created By</th>
+                                <th>Body</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,22 +46,26 @@
                             @foreach ($posts as $post)     
                             <tr>
                                 <td>{{ $post->tittle }}
-                                    <div class="table-links">
-                                        <a href="{{ route('post.edit',$post->id) }}">Edit</a>
-                                        <div class="bullet"></div>
-                                        <a href="#" onclick="event.preventDefault(); $('#destroy-{{ $post->id }}').submit()">Delete</a>
-                                        <div class="bullet"></div>
-                                        <form id="destroy-{{ $post->id }}" action="{{ route('post.destroy',$post->id) }}" method="POST">
-                                            @csrf 
-                                            @method('DELETE')
-                                        </form>
-
                                 </div>
                                 </td>
-                                <td>{{ $post->slug }}</td>
-                                <td>{{ $post->excerpt }}</td>
-                                <td>{{ $post->created_at }}</td>
-                                <td>{{ $post->user->name }}</td>
+                                <td>{{ @$post->body }}
+                                  <div>
+                                    <td>
+                              
+                                      <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                      <a class="btn btn-danger btn-action trigger--fire-modal-1" data-toggle="tooltip" title="" data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?" data-confirm-yes="alert('Deleted')" data-original-title="Delete"><i class="fas fa-trash"></i></a>
+                                    </td>
+                                  </div>
+                                </td>
+                                {{-- <td><div class="table-links">
+                                  <a href="{{ route('post.edit',$post->id) }}">Edit</a>
+                                  <div class="bullet"></div>
+                                  <a href="#" onclick="event.preventDefault(); $('#destroy-{{ $post->id }}').submit()">Delete</a>
+                                  <div class="bullet"></div>
+                                  <form id="destroy-{{ $post->id }}" action="{{ route('post.destroy',$post->id) }}" method="POST">
+                                      @csrf 
+                                      @method('DELETE')
+                                  </form></td> --}}
                             </tr>
                             @endforeach
                             
